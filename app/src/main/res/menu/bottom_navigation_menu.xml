@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bottom_nations"
+        android:icon="@drawable/ic_nations"
+        android:title="Nations"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/bottom_world"
+        android:icon="@drawable/ic_world"
+        android:title="World"
+        app:showAsAction="always" />
+
+</menu>
