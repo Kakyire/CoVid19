@@ -116,7 +116,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:orientation="horizontal"
-
                         android:paddingBottom="10dp">
 
                         <TextView
@@ -141,12 +140,13 @@
 
                         <Button
                             android:id="@+id/ad_call_to_action"
-                            style="@style/Widget.AppCompat.Button.Colored"
+                            style="@style/Widget.MaterialComponents.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/button_shape"
                             android:gravity="center"
-                            android:textSize="@dimen/mediumText" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/smallText" />
 
                     </LinearLayout>
 

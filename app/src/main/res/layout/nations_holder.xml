@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2sp"
+        android:layout_margin="5dp"
         android:orientation="vertical">
 
         <TextView
@@ -148,52 +148,52 @@
 
 
         <LinearLayout
-            android:layout_marginBottom="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginEnd="8sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8sp"
                 android:fontFamily="@font/covid_fonts"
                 android:text="Active Cases:"
                 android:textSize="@dimen/mediumText"
                 android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/nation_active_cases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/nation_active_cases"
-                android:textSize="@dimen/mediumText"
+                android:fontFamily="@font/covid_fonts"
                 android:text="Active cases"
-                android:fontFamily="@font/covid_fonts" />
+                android:textSize="@dimen/mediumText" />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_marginBottom="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginEnd="8sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8sp"
                 android:fontFamily="@font/covid_fonts"
-                android:text="Serious:"
+                android:text="Critical:"
                 android:textSize="@dimen/mediumText"
                 android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/nation_critical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/nation_critical"
-                android:textSize="@dimen/mediumText"
+                android:fontFamily="@font/covid_fonts"
                 android:text="Critical Cases"
-                android:fontFamily="@font/covid_fonts" />
+                android:textSize="@dimen/mediumText" />
         </LinearLayout>
 
     </LinearLayout>

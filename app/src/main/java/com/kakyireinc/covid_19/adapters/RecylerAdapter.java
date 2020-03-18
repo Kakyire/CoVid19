@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,12 +19,17 @@ import com.kakyireinc.covid_19.R;
 import com.kakyireinc.covid_19.models.NationsCases;
 import com.kakyireinc.covid_19.models.WorldCases;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
 
     private final int NATIVEAD_VIEWTYPE = 0;
@@ -31,33 +38,47 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private Context context;
     private List<Object> list;
+    private List<NationsCases> nationsCases;
 
 
     public RecylerAdapter(Context context, List<Object> list) {
         this.context = context;
         this.list = list;
+        nationsCases = new ArrayList<>();
+        copyList();
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
+copyList();
+//        switch (viewType) {
+//            case NATIVEAD_VIEWTYPE:
+//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ad_unified, parent, false);
+//                return new NationsViewHolder(view);
+//
+//            case NATIONS_MODEL_VIEWTYPE:
+//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nations_holder, parent, false);
+//                return new NationsViewHolder(view);
+//
+//            case WORLD_MODEL_VIEWTYPE:
+////            default:
+//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.world_holder, parent, false);
+//                return new WorldViewHolder(view);
+//        }
 
-        switch (viewType) {
-            case NATIVEAD_VIEWTYPE:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ad_unified, parent, false);
-                return new NationsViewHolder(view);
 
-            case NATIONS_MODEL_VIEWTYPE:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nations_holder, parent, false);
-                return new NationsViewHolder(view);
-
-            case WORLD_MODEL_VIEWTYPE:
-            default:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.world_holder, parent, false);
-                return new WorldViewHolder(view);
+        if (viewType == NATIVEAD_VIEWTYPE) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ad_unified, parent, false);
+            return new NativeAdViewHolder(view);
+        } else if (viewType == WORLD_MODEL_VIEWTYPE) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.world_holder, parent, false);
+            return new WorldViewHolder(view);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nations_holder, parent, false);
+            return new NationsViewHolder(view);
         }
-
 
     }
 
@@ -66,6 +87,8 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         int viewtype = getItemViewType(position);
 
+        NumberFormat format = new DecimalFormat("###,###,###,###");
+        String newCases, cases, deaths, newDeaths, recovered, serious, active;
 
         //binding items to various views
         switch (viewtype) {
@@ -74,14 +97,22 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 NationsViewHolder nationsViewHolder = (NationsViewHolder) holder;
                 NationsCases nationsCases = (NationsCases) list.get(position);
 
+                cases = format.format(nationsCases.getCases());
+                newCases = format.format(nationsCases.getTodayCases());
+                deaths = format.format(nationsCases.getDeaths());
+                newDeaths = format.format(nationsCases.getTodayDeaths());
+                recovered = format.format(nationsCases.getRecovered());
+                serious = format.format(nationsCases.getCritical());
+                active = format.format(nationsCases.getActive());
+
                 nationsViewHolder.nationName.setText(nationsCases.getCountry());
-                nationsViewHolder.nationCase.setText(nationsCases.getCases());
-                nationsViewHolder.nationNewCase.setText(nationsCases.getTodayCases());
-                nationsViewHolder.nationDeath.setText(nationsCases.getDeaths());
-                nationsViewHolder.nationNewDeath.setText(nationsCases.getTodayDeaths());
-                nationsViewHolder.nationRecovered.setText(nationsCases.getRecovered());
-                nationsViewHolder.nationSerious.setText(nationsCases.getCritical());
-                nationsViewHolder.nationActive.setText(nationsCases.getActive());
+                nationsViewHolder.nationCase.setText(cases);
+                nationsViewHolder.nationNewCase.setText(newCases);
+                nationsViewHolder.nationDeath.setText(deaths);
+                nationsViewHolder.nationNewDeath.setText(newDeaths);
+                nationsViewHolder.nationRecovered.setText(recovered);
+                nationsViewHolder.nationSerious.setText(serious);
+                nationsViewHolder.nationActive.setText(active);
 
 
                 break;
@@ -99,10 +130,13 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 WorldViewHolder worldViewHolder = (WorldViewHolder) holder;
                 WorldCases world = (WorldCases) list.get(position);
 
-
-                worldViewHolder.worldDeath.setText(world.getDeaths());
-                worldViewHolder.worldRecoverd.setText(world.getRecovered());
-                worldViewHolder.worldCase.setText(world.getCases());
+                deaths = format.format(world.getDeaths());
+                recovered = format.format(world.getRecovered());
+                cases = format.format(world.getCases());
+                worldViewHolder.worldDeath.setText(deaths);
+                worldViewHolder.worldRecoverd.setText(recovered);
+                worldViewHolder.worldCase.setText(cases);
+                System.out.println(world.getCases());
 
                 break;
         }
@@ -111,6 +145,9 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
+//        System.out.println(nationsCases.size());
+//        System.out.println(list.size());
+//        copyList();
         return list.size();
     }
 
@@ -127,6 +164,46 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return WORLD_MODEL_VIEWTYPE;
 
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<NationsCases> cases = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                cases.addAll(nationsCases);
+            } else {
+                String country = constraint.toString().toLowerCase().trim();
+
+                for (NationsCases nation : nationsCases) {
+                    if (nation.getCountry().toLowerCase().contains(country)) {
+                        cases.add(nation);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = cases;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+
+            list.clear();
+            list.addAll((List) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
 
     //viewholder class for NationsModel
@@ -180,9 +257,9 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public NativeAdViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            adView = (UnifiedNativeAdView) itemView.findViewById(R.id.ad_view);
+            adView = itemView.findViewById(R.id.ad_view);
 
-            adView.setMediaView((MediaView) adView.findViewById(R.id.ad_media));
+            adView.setMediaView(adView.findViewById(R.id.ad_media));
 
             // Register the view used for each individual asset.
             adView.setHeadlineView(adView.findViewById(R.id.ad_headline));
@@ -250,5 +327,20 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         adView.setNativeAd(nativeAd);
 
+    }
+
+
+
+    private void copyList(){
+        nationsCases=new ArrayList<>();
+        System.out.println("We are here");
+        for (Object toCopy:list){
+            System.out.println("now here");
+            if (toCopy instanceof NationsCases){
+                nationsCases.add((NationsCases) toCopy);
+            }
+
+            System.out.println("Nation cases "+nationsCases.size());
+        }
     }
 }

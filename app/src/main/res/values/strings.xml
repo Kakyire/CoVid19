@@ -8,13 +8,18 @@
     <string name="interstitial_ad">ca-app-pub-3265381488677888/2851041116</string>
     <string name="native_ad">ca-app-pub-3265381488677888/4463505681</string>
 
-<!--sample ads-->
+    <!--sample ads-->
     <string name="sample_admob_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="sample_nativead">ca-app-pub-3940256099942544/2247696110</string>
     <string name="sample_rewardad">ca-app-pub-3940256099942544/5224354917</string>
     <string name="sample_banner">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="world_information">World COVID-19 Information</string>
+
+    <!--social media-->
+    <string name="facebook">https://m.facebook.com/covid19app</string>
+    <string name="instagram">https://instagram.com/covid_19app</string>
+    <string name="playstore">"https://play.google.com/store/apps/details?id="</string>
 
 
 </resources>

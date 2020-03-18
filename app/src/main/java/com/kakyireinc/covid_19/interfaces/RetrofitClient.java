@@ -29,7 +29,7 @@ public class RetrofitClient {
 
     public interface GetData {
         @GET("/all")
-        Call<List<WorldCases>> getWorldCases();
+        Call<WorldCases> getWorldCases();
 
         @GET("/countries")
         Call<List<NationsCases>> getNationCases();

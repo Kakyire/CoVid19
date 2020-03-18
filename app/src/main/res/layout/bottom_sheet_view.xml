@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    style="@style/Widget.Design.BottomSheet.Modal"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="120dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="15dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/covid_fonts"
+            android:text="@string/app_name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/largeText"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/covid_fonts"
+            android:text="Version"
+            android:textSize="@dimen/smallText"
+            android:textStyle="italic" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_margin="12dp"
+            android:background="#5d5d5d" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/covid_fonts"
+            android:text="Follow us on"
+            android:textSize="@dimen/mediumText" />
+
+        <TextView
+            android:id="@+id/facebook_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="8dp"
+            android:drawableLeft="@drawable/facebook_24px"
+            android:fontFamily="@font/covid_fonts"
+            android:text="  Facebook"
+            android:textColor="@color/black"
+            android:textSize="@dimen/largeText" />
+
+        <TextView
+            android:id="@+id/instagram_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="8dp"
+            android:drawableLeft="@drawable/instagram_new_24px"
+            android:fontFamily="@font/covid_fonts"
+            android:text="  Instagram"
+            android:textColor="@color/black"
+            android:textSize="@dimen/largeText" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
