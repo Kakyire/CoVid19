@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -41,6 +42,7 @@ public class NationsFragment extends Fragment {
 
 
     //    view
+    TextView network;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressBar progressBar;
@@ -62,6 +64,7 @@ public class NationsFragment extends Fragment {
 
         view = inflater.inflate(R.layout.nations_fragment, container, false);
 
+        network=view.findViewById(R.id.network_problem);
         progressBar = view.findViewById(R.id.progress_bar);
         swipeRefreshLayout = view.findViewById(R.id.nation_swipe);
         recyclerView = view.findViewById(R.id.nations_recyclerview);
@@ -72,14 +75,18 @@ public class NationsFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
 
         list.clear();
+        adapter.notifyDataSetChanged();
         LoadAds();
         LoadItems();
 
         setHasOptionsMenu(true);//enabling option menu
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
             @Override
             public void onRefresh() {
+                network.setVisibility(View.GONE);
                list.clear();
+               adapter.notifyDataSetChanged();
                 LoadAds();
                 LoadItems();
             }
@@ -101,6 +108,7 @@ public class NationsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 new OffRefresh().offRefresh(swipeRefreshLayout);
                 progressBar.setVisibility(View.INVISIBLE);
+                network.setVisibility(View.GONE);
 
 
             }
@@ -110,6 +118,7 @@ public class NationsFragment extends Fragment {
                 Log.i("LOG", t.getMessage());
                 new OffRefresh().offRefresh(swipeRefreshLayout);
                 progressBar.setVisibility(View.INVISIBLE);
+                network.setVisibility(View.VISIBLE);
             }
         });
 
@@ -169,6 +178,7 @@ public class NationsFragment extends Fragment {
     }
 
     private void PopulateAds() {
+
         if (nativeAds.size() <= 0) {
             return;
         }
@@ -181,7 +191,7 @@ public class NationsFragment extends Fragment {
             for (UnifiedNativeAd ad : nativeAds) {
 
 
-                //whenever nativeAd index is less than list size ad
+                //whenever nativeAd index is less than list size add
                 //it to the list
                 if (index <= list.size()) {
 

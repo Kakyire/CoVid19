@@ -31,6 +31,7 @@ public class WorldFragment extends Fragment {
 
 
     View view;
+    TextView network;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressBar progressBar;
@@ -44,7 +45,8 @@ public class WorldFragment extends Fragment {
 
         view = inflater.inflate(R.layout.world_fragment, container, false);
 
-        progressBar=view.findViewById(R.id.progress_bar);
+        network = view.findViewById(R.id.network_problem);
+        progressBar = view.findViewById(R.id.progress_bar);
         swipeRefreshLayout = view.findViewById(R.id.world_swipe);
         recyclerView = view.findViewById(R.id.world_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -53,6 +55,7 @@ public class WorldFragment extends Fragment {
 
 
         list.clear();
+        adapter.notifyDataSetChanged();
         progressBar.setVisibility(View.VISIBLE);
         LoadItems();
 
@@ -60,14 +63,14 @@ public class WorldFragment extends Fragment {
             @Override
             public void onRefresh() {
 //                LoadAds();
+                network.setVisibility(View.GONE);
                 list.clear();
+                adapter.notifyDataSetChanged();
                 LoadItems();
             }
         });
         return view;
     }
-
-
 
 
     private void LoadItems() {
@@ -81,6 +84,7 @@ public class WorldFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 new OffRefresh().offRefresh(swipeRefreshLayout);
                 progressBar.setVisibility(View.INVISIBLE);
+                network.setVisibility(View.GONE);
             }
 
             @Override
@@ -88,6 +92,7 @@ public class WorldFragment extends Fragment {
                 Log.i("Error", t.getMessage());
                 new OffRefresh().offRefresh(swipeRefreshLayout);
                 progressBar.setVisibility(View.INVISIBLE);
+                network.setVisibility(View.VISIBLE);
             }
         });
     }

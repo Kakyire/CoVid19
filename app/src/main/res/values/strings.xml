@@ -20,6 +20,7 @@
     <string name="facebook">https://m.facebook.com/covid19app</string>
     <string name="instagram">https://instagram.com/covid_19app</string>
     <string name="playstore">"https://play.google.com/store/apps/details?id="</string>
+    <string name="network_problem">You may have network problem.\n Please Swipe down to refresh</string>
 
 
 </resources>

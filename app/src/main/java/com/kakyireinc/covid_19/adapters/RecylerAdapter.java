@@ -97,13 +97,13 @@ copyList();
                 NationsViewHolder nationsViewHolder = (NationsViewHolder) holder;
                 NationsCases nationsCases = (NationsCases) list.get(position);
 
-                cases = format.format(nationsCases.getCases());
-                newCases = format.format(nationsCases.getTodayCases());
-                deaths = format.format(nationsCases.getDeaths());
-                newDeaths = format.format(nationsCases.getTodayDeaths());
-                recovered = format.format(nationsCases.getRecovered());
-                serious = format.format(nationsCases.getCritical());
-                active = format.format(nationsCases.getActive());
+                cases = format.format(Double.valueOf(nationsCases.getCases()));
+                newCases = format.format(Double.valueOf(nationsCases.getTodayCases()));
+                deaths = format.format(Double.valueOf(nationsCases.getDeaths()));
+                newDeaths = format.format(Double.valueOf(nationsCases.getTodayDeaths()));
+                recovered = format.format(Double.valueOf(nationsCases.getRecovered()));
+                serious = format.format(Double.valueOf(nationsCases.getCritical()));
+                active = format.format(Double.valueOf(nationsCases.getActive()));
 
                 nationsViewHolder.nationName.setText(nationsCases.getCountry());
                 nationsViewHolder.nationCase.setText(cases);
@@ -130,9 +130,9 @@ copyList();
                 WorldViewHolder worldViewHolder = (WorldViewHolder) holder;
                 WorldCases world = (WorldCases) list.get(position);
 
-                deaths = format.format(world.getDeaths());
-                recovered = format.format(world.getRecovered());
-                cases = format.format(world.getCases());
+                deaths = format.format(Double.valueOf(world.getDeaths()));
+                recovered = format.format(Double.valueOf(world.getRecovered()));
+                cases = format.format(Double.valueOf(world.getCases()));
                 worldViewHolder.worldDeath.setText(deaths);
                 worldViewHolder.worldRecoverd.setText(recovered);
                 worldViewHolder.worldCase.setText(cases);

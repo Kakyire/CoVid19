@@ -9,8 +9,8 @@
         style="@style/SpinKitView.CubeGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:SpinKit_Color="@color/colorAccent"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        app:SpinKit_Color="@color/colorAccent" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/nation_swipe"
@@ -25,5 +25,15 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/network_problem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:text="@string/network_problem"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/mediumText" />
 </RelativeLayout>
