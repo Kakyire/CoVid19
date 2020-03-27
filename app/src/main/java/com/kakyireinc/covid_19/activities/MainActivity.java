@@ -1,14 +1,17 @@
 package com.kakyireinc.covid_19.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        UninstallApp();
         MobileAds.initialize(getApplicationContext(), getString(R.string.admob_id));
         interstitialAd = new InterstitialAd(getApplicationContext());
         interstitialAd.setAdUnitId(getString(R.string.interstitial_ad));
@@ -146,4 +151,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         startActivity(intent);
     }
 
+
+    Intent uninstallintent;
+
+    //check if old version is installed
+    private void UninstallApp() {
+        uninstallintent = getPackageManager().getLaunchIntentForPackage("com.kakyireinc.covid_19");
+
+        if (uninstallintent != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Uninstalled Old Version")
+                    .setMessage(Html.fromHtml("Old version of <b>COVID-19</b> detected.<br> Please <b>Uninstall</b> "))
+                    .setPositiveButton("Unsinstall", (dialog, which) -> {
+                        Uri packagetoRemove = Uri.parse("package:com.kakyireinc.churchpartner");
+                        uninstallintent = new Intent(Intent.ACTION_DELETE, packagetoRemove);
+                        startActivity(uninstallintent);
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> finish());
+            builder.create()
+                    .show();
+
+//            AlertDialog alert = builder.create();
+//            alert.show();
+        }
+    }
 }
