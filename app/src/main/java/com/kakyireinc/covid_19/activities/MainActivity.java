@@ -31,7 +31,7 @@ import com.kakyireinc.covid_19.fragments.WorldFragment;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
-    TextView version, facebook, instagram;
+    TextView version, facebook, instagram, twitter;
     BottomNavigationView bottomNavigationView;
     BottomSheetBehavior sheetBehavior;
     View linearlayout;
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         linearlayout = findViewById(R.id.bottom_sheet);
         sheetBehavior = BottomSheetBehavior.from(linearlayout);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        twitter = findViewById(R.id.twitter_follow);
         instagram = findViewById(R.id.instagram_follow);
         facebook = findViewById(R.id.facebook_follow);
         version = findViewById(R.id.app_version);
@@ -70,19 +71,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         String versionNumber = "Version: " + BuildConfig.VERSION_NAME;
         version.setText(versionNumber);
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadSocial(getString(R.string.facebook));
-            }
-        });
+        facebook.setOnClickListener(v -> loadSocial(getString(R.string.facebook)));
 
-        instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadSocial(getString(R.string.instagram));
-            }
-        });
+        instagram.setOnClickListener(v -> loadSocial(getString(R.string.instagram)));
+
+        twitter.setOnClickListener(v -> loadSocial(getString(R.string.twitter)));
     }
 
     @Override
@@ -163,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             builder.setTitle("Uninstalled Old Version")
                     .setMessage(Html.fromHtml("Old version of <b>COVID-19</b> detected.<br> Please <b>Uninstall</b> "))
                     .setPositiveButton("Unsinstall", (dialog, which) -> {
-                        Uri packagetoRemove = Uri.parse("package:com.kakyireinc.churchpartner");
+                        Uri packagetoRemove = Uri.parse("package:com.kakyireinc.covid_19");
                         uninstallintent = new Intent(Intent.ACTION_DELETE, packagetoRemove);
                         startActivity(uninstallintent);
                     })

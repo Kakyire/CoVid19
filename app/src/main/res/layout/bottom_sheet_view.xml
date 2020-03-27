@@ -4,11 +4,11 @@
     android:id="@+id/bottom_sheet"
     style="@style/Widget.Design.BottomSheet.Modal"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="450dp"
     android:layout_margin="10dp"
     android:orientation="vertical"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="120dp"
+    app:behavior_peekHeight="200dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="15dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
@@ -79,6 +79,17 @@
             android:drawableLeft="@drawable/instagram_new_24px"
             android:fontFamily="@font/covid_fonts"
             android:text="  Instagram"
+            android:textColor="@color/black"
+            android:textSize="@dimen/largeText" />
+
+        <TextView
+            android:id="@+id/twitter_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="8dp"
+            android:drawableLeft="@drawable/twitter_24px"
+            android:fontFamily="@font/covid_fonts"
+            android:text="  Twitter"
             android:textColor="@color/black"
             android:textSize="@dimen/largeText" />
 
