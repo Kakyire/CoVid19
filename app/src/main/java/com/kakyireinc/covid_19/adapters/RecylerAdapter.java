@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
@@ -22,9 +21,7 @@ import com.kakyireinc.covid_19.models.WorldCases;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,7 +49,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-copyList();
+        copyList();
 //        switch (viewType) {
 //            case NATIVEAD_VIEWTYPE:
 //                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ad_unified, parent, false);
@@ -101,7 +98,14 @@ copyList();
                 newCases = format.format(Double.valueOf(nationsCases.getTodayCases()));
                 deaths = format.format(Double.valueOf(nationsCases.getDeaths()));
                 newDeaths = format.format(Double.valueOf(nationsCases.getTodayDeaths()));
-                recovered = format.format(Double.valueOf(nationsCases.getRecovered()));
+
+                if (nationsCases.getRecovered() != null) {
+                    recovered = format.format(Double.valueOf(nationsCases.getRecovered()));
+                } else {
+                    recovered = "0";
+                }
+
+
                 serious = format.format(Double.valueOf(nationsCases.getCritical()));
                 active = format.format(Double.valueOf(nationsCases.getActive()));
 
@@ -330,17 +334,16 @@ copyList();
     }
 
 
-
-    private void copyList(){
-        nationsCases=new ArrayList<>();
+    private void copyList() {
+        nationsCases = new ArrayList<>();
         System.out.println("We are here");
-        for (Object toCopy:list){
+        for (Object toCopy : list) {
             System.out.println("now here");
-            if (toCopy instanceof NationsCases){
+            if (toCopy instanceof NationsCases) {
                 nationsCases.add((NationsCases) toCopy);
             }
 
-            System.out.println("Nation cases "+nationsCases.size());
+            System.out.println("Nation cases " + nationsCases.size());
         }
     }
 }

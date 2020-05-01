@@ -30,6 +30,19 @@ public class NationsCases {
     @Expose
     private Integer critical;
 
+    @SerializedName("casesPerOneMillion")
+    @Expose
+    private Integer casesPerOneMillion;
+    @SerializedName("deathsPerOneMillion")
+    @Expose
+    private Integer deathsPerOneMillion;
+    @SerializedName("totalTests")
+    @Expose
+    private Integer totalTests;
+    @SerializedName("testsPerOneMillion")
+    @Expose
+    private Integer testsPerOneMillion;
+
     public String getCountry() {
         return country;
     }
@@ -94,5 +107,35 @@ public class NationsCases {
         this.critical = critical;
     }
 
+    public Integer getCasesPerOneMillion() {
+        return casesPerOneMillion;
+    }
 
+    public void setCasesPerOneMillion(Integer casesPerOneMillion) {
+        this.casesPerOneMillion = casesPerOneMillion;
+    }
+
+    public Integer getDeathsPerOneMillion() {
+        return deathsPerOneMillion;
+    }
+
+    public void setDeathsPerOneMillion(Integer deathsPerOneMillion) {
+        this.deathsPerOneMillion = deathsPerOneMillion;
+    }
+
+    public Integer getTotalTests() {
+        return totalTests;
+    }
+
+    public void setTotalTests(Integer totalTests) {
+        this.totalTests = totalTests;
+    }
+
+    public Integer getTestsPerOneMillion() {
+        return testsPerOneMillion;
+    }
+
+    public void setTestsPerOneMillion(Integer testsPerOneMillion) {
+        this.testsPerOneMillion = testsPerOneMillion;
+    }
 }
