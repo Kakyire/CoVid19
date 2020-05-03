@@ -1,4 +1,4 @@
-package com.kakyireinc.covid_19.models;
+package com.kakyireinc.covid19.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

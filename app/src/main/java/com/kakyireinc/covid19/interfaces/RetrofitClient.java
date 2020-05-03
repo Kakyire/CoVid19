@@ -1,7 +1,7 @@
-package com.kakyireinc.covid_19.interfaces;
+package com.kakyireinc.covid19.interfaces;
 
-import com.kakyireinc.covid_19.models.NationsCases;
-import com.kakyireinc.covid_19.models.WorldCases;
+import com.kakyireinc.covid19.models.NationsCases;
+import com.kakyireinc.covid19.models.WorldCases;
 
 import java.util.List;
 

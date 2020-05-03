@@ -1,4 +1,4 @@
-package com.kakyireinc.covid_19.fragments;
+package com.kakyireinc.covid19.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,11 +17,11 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
-import com.kakyireinc.covid_19.R;
-import com.kakyireinc.covid_19.adapters.RecylerAdapter;
-import com.kakyireinc.covid_19.interfaces.RetrofitClient;
-import com.kakyireinc.covid_19.models.NationsCases;
-import com.kakyireinc.covid_19.utils.OffRefresh;
+import com.kakyireinc.covid19.R;
+import com.kakyireinc.covid19.adapters.RecylerAdapter;
+import com.kakyireinc.covid19.interfaces.RetrofitClient;
+import com.kakyireinc.covid19.models.NationsCases;
+import com.kakyireinc.covid19.utils.OffRefresh;
 
 import java.util.ArrayList;
 import java.util.List;

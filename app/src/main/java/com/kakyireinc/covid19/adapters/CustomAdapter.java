@@ -1,4 +1,4 @@
-package com.kakyireinc.covid_19.adapters;
+package com.kakyireinc.covid19.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kakyireinc.covid_19.R;
-import com.kakyireinc.covid_19.models.NationsCases;
+import com.kakyireinc.covid19.R;
+import com.kakyireinc.covid19.models.NationsCases;
 
 import java.util.List;
 

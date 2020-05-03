@@ -1,4 +1,4 @@
-package com.kakyireinc.covid_19.utils;
+package com.kakyireinc.covid19.utils;
 
 import android.os.Handler;
 

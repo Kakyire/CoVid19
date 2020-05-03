@@ -1,4 +1,4 @@
-package com.kakyireinc.covid_19.adapters;
+package com.kakyireinc.covid19.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,9 +14,9 @@ import android.widget.TextView;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
-import com.kakyireinc.covid_19.R;
-import com.kakyireinc.covid_19.models.NationsCases;
-import com.kakyireinc.covid_19.models.WorldCases;
+import com.kakyireinc.covid19.R;
+import com.kakyireinc.covid19.models.NationsCases;
+import com.kakyireinc.covid19.models.WorldCases;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

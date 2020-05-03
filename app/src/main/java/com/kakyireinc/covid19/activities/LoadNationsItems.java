@@ -1,12 +1,4 @@
-package com.kakyireinc.covid_19.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+package com.kakyireinc.covid19.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -18,16 +10,21 @@ import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
-import com.kakyireinc.covid_19.R;
-import com.kakyireinc.covid_19.adapters.CustomAdapter;
-import com.kakyireinc.covid_19.adapters.RecylerAdapter;
-import com.kakyireinc.covid_19.interfaces.RetrofitClient;
-import com.kakyireinc.covid_19.models.NationsCases;
-import com.kakyireinc.covid_19.models.WorldCases;
-import com.kakyireinc.covid_19.utils.OffRefresh;
+import com.kakyireinc.covid19.R;
+import com.kakyireinc.covid19.adapters.RecylerAdapter;
+import com.kakyireinc.covid19.interfaces.RetrofitClient;
+import com.kakyireinc.covid19.models.WorldCases;
+import com.kakyireinc.covid19.utils.OffRefresh;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoadNationsItems extends AppCompatActivity {
 
