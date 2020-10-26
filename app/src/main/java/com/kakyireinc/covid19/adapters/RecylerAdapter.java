@@ -82,34 +82,42 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        int viewtype = getItemViewType(position);
+        int viewType = getItemViewType(position);
 
         NumberFormat format = new DecimalFormat("###,###,###,###");
-        String newCases, cases, deaths, newDeaths, recovered, serious, active;
+        String newCases;
+        String cases;
+        String deaths;
+        String newDeaths;
+        String recovered;
+        String serious;
+        String active = null;
 
         //binding items to various views
-        switch (viewtype) {
+        switch (viewType) {
 
             case NATIONS_MODEL_VIEWTYPE:
                 NationsViewHolder nationsViewHolder = (NationsViewHolder) holder;
-                NationsCases nationsCases = (NationsCases) list.get(position);
+                NationsCases nationCases = (NationsCases) list.get(position);
 
-                cases = format.format(Double.valueOf(nationsCases.getCases()));
-                newCases = format.format(Double.valueOf(nationsCases.getTodayCases()));
-                deaths = format.format(Double.valueOf(nationsCases.getDeaths()));
-                newDeaths = format.format(Double.valueOf(nationsCases.getTodayDeaths()));
+                cases = format.format(Double.valueOf(nationCases.getCases()));
+                newCases = format.format(Double.valueOf(nationCases.getTodayCases()));
+                deaths = format.format(Double.valueOf(nationCases.getDeaths()));
+                newDeaths = format.format(Double.valueOf(nationCases.getTodayDeaths()));
 
-                if (nationsCases.getRecovered() != null) {
-                    recovered = format.format(Double.valueOf(nationsCases.getRecovered()));
+                if (nationCases.getRecovered() != null) {
+                    recovered = format.format(Double.valueOf(nationCases.getRecovered()));
                 } else {
                     recovered = "0";
                 }
 
 
-                serious = format.format(Double.valueOf(nationsCases.getCritical()));
-                active = format.format(Double.valueOf(nationsCases.getActive()));
+                serious = format.format(Double.valueOf(nationCases.getCritical()));
+                if (nationCases.getActive() != null) {
+                    active = format.format(Double.valueOf(nationCases.getActive()));
+                }
 
-                nationsViewHolder.nationName.setText(nationsCases.getCountry());
+                nationsViewHolder.nationName.setText(nationCases.getCountry());
                 nationsViewHolder.nationCase.setText(cases);
                 nationsViewHolder.nationNewCase.setText(newCases);
                 nationsViewHolder.nationDeath.setText(deaths);
