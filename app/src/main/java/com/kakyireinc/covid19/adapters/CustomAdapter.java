@@ -14,7 +14,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NationHoler> {
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NationViewHolder> {
 
     Context context;
     List<NationsCases> list;
@@ -26,15 +26,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NationHole
 
     @NonNull
     @Override
-    public NationHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nations_holder,
                 parent, false);
-        return new NationHoler(view);
+        return new NationViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NationHoler holder, int position) {
+    public void onBindViewHolder(@NonNull NationViewHolder holder, int position) {
 
         holder.nationName.setText(list.get(position).getCountry());
         holder.nationCase.setText(list.get(position).getCases().toString());
@@ -52,12 +52,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NationHole
         return list.size();
     }
 
-    public class NationHoler extends RecyclerView.ViewHolder {
+    public class NationViewHolder extends RecyclerView.ViewHolder {
         TextView nationName, nationDeath, nationRecovered, nationActive,
                 nationSerious, nationNewCase, nationNewDeath, nationCase;
 
 
-        public NationHoler(@NonNull View itemView) {
+        public NationViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nationName = itemView.findViewById(R.id.nation_name);

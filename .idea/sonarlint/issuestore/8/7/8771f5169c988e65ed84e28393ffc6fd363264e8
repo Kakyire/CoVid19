@@ -1,0 +1,6 @@
+
+<
+java:S11706"!Make this final field static too.(Νƒζωÿÿÿÿ
+r	java:S1166"XRename this field "NUMBER_OF_ADS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Νƒζωÿÿÿÿ
+W	java:S125V"<This block of commented-out lines of code should be removed.(ΐ{8³ο¥ώ.
+W	java:S125N"<This block of commented-out lines of code should be removed.(ΐ{8½π¥ώ.

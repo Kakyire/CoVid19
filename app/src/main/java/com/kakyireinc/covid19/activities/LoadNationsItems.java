@@ -49,7 +49,7 @@ public class LoadNationsItems extends AppCompatActivity {
         setContentView(R.layout.activity_load_nations_items);
 
 
-        MobileAds.initialize(this, getString(R.string.sample_admob_id));
+//        MobileAds.initialize(this, getString(R.string.sample_admob_id));
 
 //        progressBar = findViewById(R.id.progress_bar);
 //        swipeRefreshLayout = findViewById(R.id.nation_swipe);
@@ -143,7 +143,7 @@ public class LoadNationsItems extends AppCompatActivity {
             for (UnifiedNativeAd ad : nativeAds) {
 
 
-                //whenever nativeAd index is less than list size ad
+                //whenever nativeAd index is less than list size add
                 //it to the list
                 if (index <= list.size()) {
 

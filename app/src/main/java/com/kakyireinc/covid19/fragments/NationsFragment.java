@@ -75,22 +75,22 @@ public class NationsFragment extends Fragment {
 
         list.clear();
         adapter.notifyDataSetChanged();
-        LoadAds();
-        LoadItems();
+//        loadAds();
+        loadItems();
 
         setHasOptionsMenu(true);//enabling option menu
         swipeRefreshLayout.setOnRefreshListener(() -> {
             network.setVisibility(View.GONE);
             list.clear();
             adapter.notifyDataSetChanged();
-            LoadAds();
-            LoadItems();
+//            loadAds();
+            loadItems();
         });
 
         return view;
     }
 
-    private void LoadItems() {
+    private void loadItems() {
 
         RetrofitClient.GetData nations = RetrofitClient.getRetrofitInstance().create(RetrofitClient.GetData.class);
         Call<List<NationsCases>> call = nations.getNationCases();
@@ -99,6 +99,7 @@ public class NationsFragment extends Fragment {
             public void onResponse(Call<List<NationsCases>> call, Response<List<NationsCases>> response) {
 
                 List<NationsCases> mNations = response.body();
+                assert mNations != null;
                 list.addAll(mNations);
                 adapter.notifyDataSetChanged();
                 new OffRefresh().offRefresh(swipeRefreshLayout);
@@ -147,7 +148,7 @@ public class NationsFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void LoadAds() {
+    private void loadAds() {
 
 
         AdLoader.Builder builder = new AdLoader.Builder(Objects.requireNonNull(getActivity()), getString(R.string.native_ad));
@@ -156,7 +157,7 @@ public class NationsFragment extends Fragment {
             nativeAds.add(unifiedNativeAd);
 
             if (!adLoader.isLoading()) {
-                PopulateAds();
+                populateAds();
             }
 
         }).withAdListener(new AdListener() {
@@ -164,7 +165,7 @@ public class NationsFragment extends Fragment {
             @Override
             public void onAdFailedToLoad(int i) {
                 if (!adLoader.isLoading()) {
-                    PopulateAds();
+                    populateAds();
                 }
             }
         }).build();
@@ -172,9 +173,9 @@ public class NationsFragment extends Fragment {
 
     }
 
-    private void PopulateAds() {
+    private void populateAds() {
 
-        if (nativeAds.size() <= 0) {
+        if (nativeAds.isEmpty()) {
             return;
         }
 

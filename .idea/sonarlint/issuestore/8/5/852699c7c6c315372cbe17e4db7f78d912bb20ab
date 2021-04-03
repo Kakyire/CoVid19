@@ -1,0 +1,34 @@
+
+<
+java:S1170!"!Make this final field static too.(èÉÌûÿÿÿÿ
+B
+java:S1659Ñ"+Declare "nationSerious" on a separate line.(öåÉ§
+B
+java:S1659Ñ"+Declare "nationNewCase" on a separate line.(öåÉ§
+V	java:S106Í"9Replace this use of System.out or System.err by a logger.(‡¥Ø±8öŠ­Ö.
+K
+java:S1659æ"(Declare "worldDeath" on a separate line.(Âê¯§øÿÿÿÿ8öŠ­Ö.
+M
+java:S1659Ð"*Declare "nationActive" on a separate line.(œø¼°üÿÿÿÿ8öŠ­Ö.
+7
+java:S1170""!Make this final field static too.(šÝ’
+L
+java:S1659Ð")Declare "nationDeath" on a separate line.(œø¼°üÿÿÿÿ8öŠ­Ö.
+@
+java:S1068$"+Remove this unused "context" private field.(êÝç
+V	java:S106‹"9Replace this use of System.out or System.err by a logger.(íþíé8¹¦×¥þ.
+t	java:S116""_Rename this field "WORLD_MODEL_VIEWTYPE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÝ’
+N
+java:S1659æ"+Declare "worldRecoverd" on a separate line.(Âê¯§øÿÿÿÿ8öŠ­Ö.
+V	java:S106Ë"9Replace this use of System.out or System.err by a logger.(Øåƒâ8öŠ­Ö.
+{	java:S116!"aRename this field "NATIONS_MODEL_VIEWTYPE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èÉÌûÿÿÿÿ
+v	java:S116 "\Rename this field "NATIVEAD_VIEWTYPE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÞÿ×ÿÿÿÿÿ
+<
+java:S1170 "!Make this final field static too.(ÿÞÿ×ÿÿÿÿÿ
+C
+java:S1659Ñ",Declare "nationNewDeath" on a separate line.(öåÉ§
+F
+java:S1659Ñ"(Declare "nationCase" on a separate line.(öåÉ§8öŠ­Ö.
+V	java:S106Ò"9Replace this use of System.out or System.err by a logger.(žÐî¬8öŠ­Ö.
+P
+java:S1659Ð"-Declare "nationRecovered" on a separate line.(œø¼°üÿÿÿÿ8öŠ­Ö.

@@ -50,20 +50,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         copyList();
-//        switch (viewType) {
-//            case NATIVEAD_VIEWTYPE:
-//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ad_unified, parent, false);
-//                return new NationsViewHolder(view);
-//
-//            case NATIONS_MODEL_VIEWTYPE:
-//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nations_holder, parent, false);
-//                return new NationsViewHolder(view);
-//
-//            case WORLD_MODEL_VIEWTYPE:
-////            default:
-//                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.world_holder, parent, false);
-//                return new WorldViewHolder(view);
-//        }
+
 
 
         if (viewType == NATIVEAD_VIEWTYPE) {
@@ -132,13 +119,14 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             case NATIVEAD_VIEWTYPE:
                 UnifiedNativeAd unifiedNativeAd = (UnifiedNativeAd) list.get(position);
-                PopulateAd(unifiedNativeAd, ((NativeAdViewHolder) holder).getAdView());
+                populateAd(unifiedNativeAd, ((NativeAdViewHolder) holder).getAdView());
 
 
                 break;
 
 
-            case WORLD_MODEL_VIEWTYPE:
+
+            default:
                 WorldViewHolder worldViewHolder = (WorldViewHolder) holder;
                 WorldCases world = (WorldCases) list.get(position);
 
@@ -149,17 +137,13 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 worldViewHolder.worldRecoverd.setText(recovered);
                 worldViewHolder.worldCase.setText(cases);
                 System.out.println(world.getCases());
-
-                break;
         }
 
     }
 
     @Override
     public int getItemCount() {
-//        System.out.println(nationsCases.size());
-//        System.out.println(list.size());
-//        copyList();
+
         return list.size();
     }
 
@@ -167,10 +151,10 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemViewType(int position) {
 
 
-        Object bothList = list.get(position);
-        if (bothList instanceof UnifiedNativeAd) {
+        Object objects = list.get(position);
+        if (objects instanceof UnifiedNativeAd) {
             return NATIVEAD_VIEWTYPE;
-        } else if (bothList instanceof NationsCases) {
+        } else if (objects instanceof NationsCases) {
             return NATIONS_MODEL_VIEWTYPE;
         } else
             return WORLD_MODEL_VIEWTYPE;
@@ -182,7 +166,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return filter;
     }
 
-    private Filter filter = new Filter() {
+    private final Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
 
@@ -218,7 +202,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     };
 
 
-    //viewholder class for NationsModel
+    //viewHolder class for NationsModel
     public class NationsViewHolder extends RecyclerView.ViewHolder {
 
         TextView nationName, nationDeath, nationRecovered, nationActive,
@@ -240,7 +224,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    //viewholder class for WorldModel
+    //viewHolder class for WorldModel
     public class WorldViewHolder extends RecyclerView.ViewHolder {
 
         TextView worldCase, worldRecoverd, worldDeath;
@@ -287,7 +271,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     //populating the native ad
-    private void PopulateAd(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView) {
+    private void populateAd(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView) {
 
 
         ((TextView) adView.getHeadlineView()).setText(nativeAd.getHeadline());
